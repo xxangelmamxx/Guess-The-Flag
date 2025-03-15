@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<div style="width:100%;height:0;padding-bottom:65%;position:relative;"><iframe src="https://giphy.com/embed/NpQ45xjjbI5msXH0s3" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/NpQ45xjjbI5msXH0s3">via GIPHY</a></p>
+![image](https://github.com/user-attachments/assets/b7514927-6093-468a-935c-188641e036bd)
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with GIPHY 
