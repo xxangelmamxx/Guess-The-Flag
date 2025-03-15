@@ -1,5 +1,14 @@
-:root{
-  background: linear-gradient(to bottom, #0f989d, #e27bfe);
+:root {
+  background: radial-gradient(#000000,#15b9ab);
+}
+
+.mosaic-background {
+  background: 
+    url('/sheldon.png') top right / 25% 25%,
+    url('/sheldon2.png') bottom left / 25% 25%,
+    url('/public/sheldon.png') bottom right / 25% 25%;
+  width: 100vw;
+  height: 100vh;
 }
 
 body {
@@ -16,8 +25,8 @@ h1 {
   font-size: 6em;
   color: #ffffff;
   font: weight 6px;
-  line-height: 1.1;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
 h2 {
@@ -25,7 +34,8 @@ h2 {
   font-size: 1.5em;
   color: #ffffff;
   line-height: 1.1;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 4px 4px 4px rgb(0, 0, 0);
+  text-decoration:wavy;
 }
 
 h3 {
@@ -33,7 +43,7 @@ h3 {
   font-size: 1em;
   color: #ffffff;
   line-height: 1.1;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 5px rgb(0, 0, 0);
 }
 
 button {
@@ -43,7 +53,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  background-color: #000000;
+  background-color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
 }

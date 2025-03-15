@@ -3,172 +3,220 @@ import './App.css';
 
 const flashcards = [
   {
-    question: 'What is the only country that has more lakes than the rest of the world combined?',
-    answer: 'Canada',
+    answer: 'South Africa',
+    image: 'public/Flags/Bandeira-da-Africa-do-Sul.png'
   },
   {
-    question: 'What is the rarest blood type in the world?"?',
-    answer: 'AB negative',
+    answer: 'Botswana',
+    image: 'public/Flags/Flag_of_Botswana.svg.png'
   },
   {
-    question: 'What is the only rock that floats on water?',
-    answer: 'Pumice',
+    answer: 'Djibouti',
+    image: 'public/Flags/Flag_of_Djibouti.svg.png'
   },
   {
-    question: 'Which country has the most time zones (including overseas territories)?',
-    answer: 'France',
+    answer: 'Estonia',
+    image: 'public/Flags/Flag_of_Estonia.svg.png'
   },
   {
-    question: 'What is the chemical element with the highest melting point?',
-    answer: 'Tungsten (W)',
+    answer: 'India',
+    image: 'public/Flags/Flag_of_India.svg.png'
   },
   {
-    question: 'Who was the first U.S. president to be impeached?',
-    answer: 'Andrew Johnson',
+    answer: 'Kazakhstan',
+    image: 'public/Flags/Flag_of_Kazakhstan.svg.png'
   },
   {
-    question: 'What was the name of the ship that Charles Darwin traveled on during his voyage that led to the theory of evolution?',
-    answer: 'HMS Beagle',
+    answer: 'Malta',
+    image: 'public/Flags/Flag_of_Malta.svg.png'
   },
   {
-    question: 'What year did the Roman Empire officially fall?',
-    answer: '476 AD',
+    answer: 'Namibia',
+    image: 'public/Flags/Flag_of_Namibia.svg.png'
   },
   {
-    question: 'The longest reigning monarch in world history was from which country?',
-    answer: 'PFrance (Louis XIV, 72 years)',
+    answer: 'Venezuela',
+    image: 'public/Flags/Flag_of_Venezuela.svg.png'
   },
   {
-    question: 'What was the original name of New York City before being renamed by the British?',
-    answer: 'New Amsterdam',
-  },
-  {
-    question: 'What is the only planet that rotates on its side?',
-    answer: 'Uranus',
-  },
-  {
-    question: 'What is the mathematical term for a number that remains the same when flipped upside down?',
-    answer: 'Strobogrammatic number',
-  },
-  {
-    question: "What is the most abundant metal in the Earth's crust?",
-    answer: 'Aluminum (Al)',
-  },
-  {
-    question: 'What is the only human body part that cannot repair itself?',
-    answer: 'Teeth',
-  },
-  {
-    question: 'What is the scientific name for the fear of the number 13?',
-    answer: 'Triskaidekaphobia',
-  },
-  {
-    question: 'What is the only U.S. state that grows coffee commercially?',
-    answer: 'Hawaii',
-  },
-  {
-    question: 'The largest desert in the world is not the Sahara. What is it?',
-    answer: 'Antarctic Desert',
-  },
-  {
-    question: "What is the deepest known point in the world's oceans?",
-    answer: 'Challenger Deep (Mariana Trench)',
-  },
-  {
-    question: 'What is the name of the only non-rectangular flag in the world?',
-    answer: 'Nepal',
-  },
-  {
-    question: 'Which African country has the highest number of pyramids?',
-    answer: 'Sudan',
-  },
-  {
-    question: 'What was the real name of the author Mark Twain?',
-    answer: 'Samuel Langhorne Clemens',
-  },
-  {
-    question: 'In Greek mythology, who was the father of the Minotaur?',
-    answer: 'King Minos',
-  },
-  {
-    question: 'What is the longest novel ever written (by word count)?',
-    answer: 'À la recherche du temps perdu (In Search of Lost Time) by Marcel Proust',
-  },
-  {
-    question: 'In J.R.R. Tolkien’s The Lord of the Rings, what is the name of the sword that was reforged into Andúril?',
-    answer: 'Narsil',
-  },
-  {
-    question: 'Who is the only person to have won both an Oscar and a Nobel Prize?',
-    answer: 'George Bernard Shaw',
-  },
-  {
-    question: "In The Simpsons, what is Chief Wiggum's first name?",
-    answer: 'Clancy',
-  },
-  {
-    question: 'What was the first movie ever to win the Academy Award for Best Picture?',
-    answer: 'Wings (1927)',
-  },
-  {
-    question: 'What was the original name of the band "The Beatles"?',
-    answer: 'The Quarrymen',
-  },
-  {
-    question: 'What is the highest-grossing film of all time (adjusted for inflation)?',
-    answer: 'Gone with the Wind (1939)',
-  },
-  {
-    question: 'Which video game holds the record for the most copies sold worldwide?',
-    answer: 'Minecraft',
+    answer: 'United States of America',
+    image: 'public/Flags/Flag_of_the_United_States_(DoS_ECA_Color_Standard).svg.png'
   },
 ];
 
+// Special card to display when all flashcards have been answered correctly.
+const congratsCard = {
+  answer: "Bazinga! You got them all!!!",
+  image: '' // No image for the congratulatory card
+};
+
 const Flashcard = ({ card, isFlipped, onCardClick }) => {
   return (
-    <div
-      className={`flashcard ${isFlipped ? 'flipped' : ''}`}
-      onClick={onCardClick}
-    >
+    <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={onCardClick}>
       <div className="flashcard-inner">
-        <div className="flashcard-front">{card.question}</div>
-        <div className="flashcard-back">{card.answer}</div>
+        <div className="flashcard-front">
+          {card.image ? (
+            <img src={card.image} alt="Flashcard" className="flashcard-image" />
+          ) : (
+            <p>{card.answer}</p>
+          )}
+        </div>
+        <div className="flashcard-back">
+          {card.image ? <p>{card.answer}</p> : null}
+        </div>
       </div>
     </div>
   );
 };
 
 function App() {
-  const getRandomCard = () =>
-    flashcards[Math.floor(Math.random() * flashcards.length)];
-
-  const [currentCard, setCurrentCard] = useState(getRandomCard());
+  // Initialize the deck: all flashcards except the first one.
+  const initialDeck = flashcards.slice(1);
+  // History stores objects: { card, guessedCorrectly }
+  const initialHistory = flashcards.length > 0 ? [{ card: flashcards[0], guessedCorrectly: false }] : [];
+  
+  const [deck, setDeck] = useState(initialDeck);
+  const [history, setHistory] = useState(initialHistory);
+  // currentIndex points to the current card in history.
+  const [currentIndex, setCurrentIndex] = useState(initialHistory.length > 0 ? 0 : -1);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [guess, setGuess] = useState('');
+  const [score, setScore] = useState(0);
+  const [feedback, setFeedback] = useState("");
+
+  // Retrieve current card info from history; if none exists, use congratsCard.
+  const currentHistoryItem = (currentIndex >= 0 && currentIndex < history.length)
+    ? history[currentIndex]
+    : null;
+  const currentCard = currentHistoryItem ? currentHistoryItem.card : congratsCard;
+  const currentGuessed = currentHistoryItem ? currentHistoryItem.guessedCorrectly : false;
 
   const handleCardClick = () => {
-    setIsFlipped((prev) => !prev);
+    if (currentCard !== congratsCard) {
+      setIsFlipped(prev => !prev);
+      setFeedback("");
+    }
   };
 
   const handleNext = () => {
-    setCurrentCard(getRandomCard());
-    setIsFlipped(false);
+    setFeedback("");
+    // Try to move forward in history, skipping over cards that are already guessed.
+    let newIndex = currentIndex + 1;
+    while (newIndex < history.length && history[newIndex].guessedCorrectly) {
+      newIndex++;
+    }
+    if (newIndex < history.length) {
+      setCurrentIndex(newIndex);
+      setIsFlipped(false);
+      return;
+    }
+    // If history is exhausted, add the next card from the deck (if available).
+    if (deck.length > 0) {
+      const nextCard = deck[0];
+      const newHistoryItem = { card: nextCard, guessedCorrectly: false };
+      setHistory([...history, newHistoryItem]);
+      setDeck(deck.slice(1));
+      setCurrentIndex(history.length); // newHistoryItem will be added at the end.
+      setIsFlipped(false);
+      setGuess('');
+      return;
+    }
+    // If all cards have been answered correctly, then show the congrats card.
+    const allGuessed = history.every(item => item.guessedCorrectly);
+    if (allGuessed && history.length > 0 && currentCard !== congratsCard) {
+      setHistory([...history, { card: congratsCard, guessedCorrectly: true }]);
+      setCurrentIndex(history.length);
+      setIsFlipped(false);
+    }
+  };
+
+  const handleBack = () => {
+    setFeedback("");
+    // Move backward until an active (not guessed) card is found.
+    let newIndex = currentIndex - 1;
+    while (newIndex >= 0 && history[newIndex].guessedCorrectly) {
+      newIndex--;
+    }
+    if (newIndex >= 0) {
+      setCurrentIndex(newIndex);
+      setIsFlipped(false);
+    }
+  };
+
+  const handleGuessSubmit = (e) => {
+    e.preventDefault();
+    if (currentCard === congratsCard) return;
+    if (guess.trim().toLowerCase() === currentCard.answer.trim().toLowerCase()) {
+      // Mark the current card as guessed correctly in history.
+      const updatedHistory = history.map((item, index) =>
+        index === currentIndex ? { ...item, guessedCorrectly: true } : item
+      );
+      setHistory(updatedHistory);
+      setScore(prevScore => {
+        const newScore = prevScore + 1;
+        setFeedback("Correct!");
+        // If the last card is guessed correctly, automatically display the congrats card.
+        if (newScore === flashcards.length) {
+          setHistory(prevHistory => {
+            const newHistory = [...prevHistory, { card: congratsCard, guessedCorrectly: true }];
+            setCurrentIndex(newHistory.length - 1);
+            return newHistory;
+          });
+          setIsFlipped(false);
+        }
+        return newScore;
+      });
+    } else {
+      setFeedback("Incorrect! Try again.");
+    }
+    setGuess('');
   };
 
   return (
-    <div className="App">
-      <header>
-        <h1>Trivia Flashcards</h1>
-        <h2>Let's play a guessing game! &#128527;</h2>
-        <h3>Total Cards: {flashcards.length}</h3>
-      </header>
-      <main>
-        <Flashcard
-          card={currentCard}
-          isFlipped={isFlipped}
-          onCardClick={handleCardClick}
-        />
-        <button onClick={handleNext}>&#8594;</button>
-      </main>
+    <div className="mosaic-background">
+      <div className="App">
+        <header>
+          <h1>Fun With Flags</h1>
+          <h2>Bet you can't guess these flags' country &#128527;</h2>
+          <h3>Total Cards Remaining: {flashcards.length - score}</h3>
+        </header>
+        <main style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'flex-start' }}>
+          <div className="flashcard-section">
+            <div className="flashcard-container">
+              <Flashcard card={currentCard} isFlipped={isFlipped} onCardClick={handleCardClick} />
+              {currentCard !== congratsCard && (
+                <>
+                  <button className="back-button" onClick={handleBack} disabled={currentIndex === 0}>
+                    Back
+                  </button>
+                  <button className="next-button" onClick={handleNext}>
+                    Next
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+          <div className="guess-section">
+            <h4>Guess the Answer</h4>
+            <form onSubmit={handleGuessSubmit}>
+              <input
+                type="text"
+                value={guess}
+                onChange={(e) => setGuess(e.target.value)}
+                placeholder="Enter your guess"
+                disabled={currentCard === congratsCard || currentGuessed}
+              />
+              <button type="submit" disabled={currentCard === congratsCard || currentGuessed}>
+                Submit Guess
+              </button>
+            </form>
+            {feedback && (
+              <p style={{ color: feedback.startsWith("Correct") ? 'green' : 'red' }}>{feedback}</p>
+            )}
+            <p>Score: {score}</p>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
